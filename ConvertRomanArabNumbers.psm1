@@ -18,7 +18,7 @@ Function IsConvertibleToRoman {
 	Param([String] $arabic)
 
 	Try {
-		$result = $arabic -match "\d+" -and [Double]$arabic -eq [Long]$arabic -and [Long]$arabic -ge 0;
+		$result = $arabic -match "^([0-9]\.{0,1})+(e\d+|e\-\d+)$" -and [Double]$arabic -eq [Long]$arabic -and [Long]$arabic -ge 0;
 	}
 	Catch {
 		# this extra check is necessary because conversion to double fails with hex numbers
